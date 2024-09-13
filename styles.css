@@ -50,31 +50,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: auto;
     text-align: center;
     color: white;
-    background-color: #ECF0F1; /* Updated background color behind slideshow to white */
+    background-color: #ECF0F1; /* White background behind slideshow */
     padding: 20px;
 }
 
 .slideshow-container {
     position: relative;
-    width: 80%; /* 4/5ths of the page width */
-    height: 33vh; /* 1/3rd of the viewport height */
-    overflow: hidden; /* Ensure nothing overflows the container */
+    width: auto; /* Let the container size depend on the image size */
+    max-width: 80%; /* Adjust this if needed to make it larger or smaller */
+    height: auto; /* Remove fixed height to prevent cutting off images */
     margin: auto;
     border-radius: 10px; /* Optional: rounded corners */
+    overflow: hidden; /* Make sure nothing overflows */
 }
 
 .slide img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure the image covers the container without distortion */
+    height: auto; /* Maintain image's natural aspect ratio */
+    object-fit: contain; /* Ensure images are not cut off */
 }
 
 .fade {
     animation-name: fade;
-    animation-duration: 3s; /* Slow down the transition between slides */
+    animation-duration: 5s; /* Slower transition */
 }
 
 @keyframes fade {
