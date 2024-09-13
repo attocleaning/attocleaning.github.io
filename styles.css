@@ -12,7 +12,7 @@ body {
 }
 
 .header {
-    background-color: #000; /* Updated header color to black */
+    background-color: #000; /* Black header */
     padding: 20px;
     color: white;
     text-align: center;
@@ -44,27 +44,37 @@ body {
     font-weight: 600;
 }
 
+/* Hero section and slideshow adjustments */
 .hero {
     position: relative;
-    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
     text-align: center;
     color: white;
-    background-color: #1ABC9C;
+    background-color: #ECF0F1; /* Updated background color behind slideshow to white */
+    padding: 20px;
 }
 
 .slideshow-container {
     position: relative;
-    max-width: 100%;
+    width: 80%; /* 4/5ths of the page width */
+    height: 33vh; /* 1/3rd of the viewport height */
+    overflow: hidden; /* Ensure nothing overflows the container */
     margin: auto;
+    border-radius: 10px; /* Optional: rounded corners */
 }
 
-.slide {
-    display: none;
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container without distortion */
 }
 
 .fade {
     animation-name: fade;
-    animation-duration: 1.5s;
+    animation-duration: 3s; /* Slow down the transition between slides */
 }
 
 @keyframes fade {
@@ -116,7 +126,7 @@ body {
 }
 
 .footer {
-    background-color: #000; /* Updated footer color to black */
+    background-color: #000; /* Black footer */
     color: white;
     text-align: center;
     padding: 20px;
@@ -139,7 +149,7 @@ body {
     }
 
     .hero {
-        height: 300px;
+        height: auto;
     }
 
     .contact form {
@@ -153,7 +163,7 @@ body {
 
 @media (max-width: 480px) {
     .hero {
-        height: 250px;
+        height: auto;
     }
 
     .nav-links li {
