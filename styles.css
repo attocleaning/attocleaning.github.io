@@ -29,9 +29,8 @@ body {
     align-items: center;
 }
 
-.logo h1 {
-    font-weight: 600;
-    font-size: 24px;
+.logo-img {
+    max-width: 150px; /* Adjust the size of the logo */
 }
 
 .nav-links {
@@ -141,60 +140,23 @@ body {
     margin-top: 20px;
 }
 
-/* Hide the nav links and show hamburger on mobile */
-.hamburger {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-    margin-right: 15px; /* Space between hamburger and title */
-}
-
+/* Remove the nav links and header sections on mobile */
 @media (max-width: 768px) {
-    .nav-links {
+    .nav-links, .hamburger {
         display: none;
-        flex-direction: column;
-        background-color: #000; /* Black dropdown background */
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
     }
 
-    .hamburger {
-        display: block;
+    .header {
+        justify-content: center;
     }
 
-    .nav-links li {
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #ECF0F1;
+    .logo-img {
+        margin: 0 auto;
     }
-
-    .nav-links li:last-child {
-        border-bottom: none;
-    }
-
-    .logo {
-        justify-content: space-between;
-    }
-
-    .navbar {
-        justify-content: flex-start; /* Aligns hamburger and logo left */
-    }
-}
-
-/* Show the dropdown when active */
-.nav-links.active {
-    display: flex;
 }
 
 /* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-
     .service-list, .testimonial-list {
         flex-direction: column;
     }
