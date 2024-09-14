@@ -24,6 +24,11 @@ body {
     align-items: center;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo h1 {
     font-weight: 600;
     font-size: 24px;
@@ -136,6 +141,54 @@ body {
     margin-top: 20px;
 }
 
+/* Hide the nav links and show hamburger on mobile */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    margin-right: 15px; /* Space between hamburger and title */
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000; /* Black dropdown background */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ECF0F1;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .logo {
+        justify-content: space-between;
+    }
+
+    .navbar {
+        justify-content: flex-start; /* Aligns hamburger and logo left */
+    }
+}
+
+/* Show the dropdown when active */
+.nav-links.active {
+    display: flex;
+}
+
 /* Responsive Design for Mobile Devices */
 @media (max-width: 768px) {
     .navbar {
@@ -191,51 +244,3 @@ body {
         width: 100%;
     }
 }
-
-/* Hide the nav links and show hamburger on mobile */
-.hamburger {
-    display: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-}
-
-/* Display none initially for mobile navigation */
-.nav-links {
-    list-style-type: none;
-    display: flex;
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background-color: #000; /* Black dropdown background */
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .nav-links li {
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid #ECF0F1;
-    }
-
-    .nav-links li:last-child {
-        border-bottom: none;
-    }
-}
-
-/* Show the dropdown when active */
-.nav-links.active {
-    display: flex;
-}
-
-
-
