@@ -142,16 +142,23 @@ body {
 
 /* Remove the nav links and header sections on mobile */
 @media (max-width: 768px) {
-    .nav-links, .hamburger {
-        display: none;
+    .navbar {
+        justify-content: center; /* Center the entire navbar */
     }
 
-    .header {
-        justify-content: center;
+    .logo {
+        width: 100%;
+        justify-content: center; /* Center the logo within the navbar */
     }
 
     .logo-img {
         margin: 0 auto;
+        display: block; /* Ensure the image itself is centered */
+        max-width: 150px; /* Optional: adjust the size for mobile if needed */
+    }
+
+    .nav-links, .hamburger {
+        display: none;
     }
 }
 
