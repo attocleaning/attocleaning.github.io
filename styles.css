@@ -68,8 +68,11 @@ body {
 
 .slide img {
     width: 100%;
-    height: auto; /* Maintain image's natural aspect ratio */
-    object-fit: contain; /* Ensure images are not cut off */
+    height: auto; 
+    object-fit: contain;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    border-bottom-left-radius: 10px; /* Rounded bottom left corner */
+    border-bottom-right-radius: 10px; /* Rounded bottom right corner */
 }
 
 .fade {
@@ -188,3 +191,51 @@ body {
         width: 100%;
     }
 }
+
+/* Hide the nav links and show hamburger on mobile */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Display none initially for mobile navigation */
+.nav-links {
+    list-style-type: none;
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000; /* Black dropdown background */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ECF0F1;
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+}
+
+/* Show the dropdown when active */
+.nav-links.active {
+    display: flex;
+}
+
+
+
