@@ -12,9 +12,9 @@ function showSlides() {
     setTimeout(showSlides, 3000); // Change image every 3 seconds
 }
 
-<script>
+
     function toggleMenu() {
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');
     }
-</script>
+
