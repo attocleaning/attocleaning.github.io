@@ -1,0 +1,68 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Disables horizontal scrolling */
+    background-color: #f0f2f5; /* Sets the background color of the entire page */
+    text-align: center; /* Centers content in the body */
+}
+
+.header-image {
+    position: fixed; /* Keeps the image at the top and not moving on scroll */
+    top: 0;
+    left: 0;
+    right: 0; /* Ensures the image spans from left to right */
+    z-index: 1000;
+    width: 100%; /* Sets the image width to cover the full width of the viewport */
+    height: auto; /* Scales the height automatically based on the width */
+    object-fit: cover; /* Covers the space without distorting aspect ratio */
+    max-height: 100vh; /* Maximum height is 100% of the viewport height */
+}
+
+.main-image {
+    width: 100%; /* Ensure the image stretches to fill the width of the viewport */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures images are treated as block-level elements */
+    margin: 0 auto; /* Center images horizontally with no vertical margins */
+}
+
+@media (max-width: 600px) {
+    .main-image {
+        content: url('basebookmobile.png'); /* Change to mobile image on small screens */
+    }
+}
+
+.sub-image, .disclaimer-image, .button-image {
+    max-width: 100%; /* Limit maximum width to 100% of the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensures images are treated as block-level elements */
+    margin: 0 auto 15px; /* Center images horizontally with a bottom margin */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 25px auto 50px;
+}
+
+.button-container a {
+    display: inline-block;
+    margin: 10px;
+}
+
+.disclaimer-space {
+    height: 50px;
+}
+
+.custom-link, .renounced-link, .burnt-link {
+    text-decoration: none;
+    font-size: 1.0em;
+    color: #1877f2; /* Set a consistent color and modify as needed */
+}
+
+.custom-text {
+    font-family: 'Open Sans', sans-serif;
+    color: #1877f2;
+    margin: 50px auto;
+    font-size: 2.0em;
+    text-align: center;
+}
