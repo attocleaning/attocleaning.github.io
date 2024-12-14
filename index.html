@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Base</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="flavicon.png" type="image/png">
+</head>
+<body>
+    <div class="content">
+        <!-- Adding extra content to ensure you can scroll and see the image -->
+        <div class="image-buttons">
+            <a href="https://dexscreener.com/base/0xc04df638efbce3f2e316470866732debeb29b184" target="_blank">
+                <img src="dexbutton.png" alt="Dex Button">
+            </a>
+            <a href="https://x.com/SpaceBaseCoin" target="_blank">
+                <img src="twitterbutton.png" alt="Twitter Button">
+            </a>
+            <a href="https://t.me/SpaceBasee" target="_blank">
+                <img src="telegrambutton.png" alt="Telegram Button">
+            </a>
+        </div>
+        <div class="music-button">
+            <button onclick="toggleAudio()">
+                <img src="musicbutton.png" alt="Music Button">
+            </button>
+        </div>
+        <div style="height: 2000px;"></div> <!-- This height is for demonstration, adjust as needed -->
+    </div>
+    <footer>
+        <p>
+            CA: 0x59c3f424af81bb32edf3493d6d45b896d1cd8811
+            <button class="copy-button" onclick="copyToClipboard()">Copy</button>
+        </p>
+    </footer>
+
+    <audio id="spacebaseaudio" src="spacebaseaudio.mp3"></audio>
+
+    <script>
+        function copyToClipboard() {
+            const address = "0x59c3f424af81bb32edf3493d6d45b896d1cd8811";
+            const textarea = document.createElement("textarea");
+            textarea.value = address;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("Copied to clipboard: " + address);
+        }
+
+        function toggleAudio() {
+            const audio = document.getElementById('spacebaseaudio');
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
