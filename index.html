@@ -14,11 +14,11 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            background: linear-gradient(135deg, #3366FF, #A3D4FF); /* Main gradient */
-            background-attachment: fixed; /* Ensure consistency */
-            background-size: cover; /* Cover the entire viewport */
-            background-repeat: no-repeat; /* Prevent repetition */
-            background-color: #3399FF; /* Fallback solid color matching the gradient */
+            background: linear-gradient(135deg, #3366FF, #A3D4FF);
+            background-attachment: fixed;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: #3399FF;
             color: #ffffff;
             font-family: Arial, sans-serif;
             overflow-y: auto;
@@ -34,7 +34,7 @@
             overflow: hidden;
             z-index: -1;
             pointer-events: none;
-            display: none; /* Initially hidden, enabled if animation works */
+            display: none;
         }
 
         .matrix span {
@@ -88,12 +88,12 @@
             font-family: 'Arial Black', sans-serif;
         }
 
-            @media (max-width: 768px) {
-        h1 {
-            font-size: 2rem; /* Half the size */
-            margin: 25px 10px 10px; /* Adjust margins proportionally */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+                margin: 25px 10px 10px;
+            }
         }
-    }
 
         .subtitle {
             font-size: 1.5rem;
@@ -235,6 +235,37 @@
             cursor: not-allowed;
         }
 
+        .tokenomics {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 82, 255, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+        }
+
+        .tokenomics h2 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #0052FF;
+            text-shadow: 2px 2px #000;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .tokenomics ul {
+            list-style-position: inside;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tokenomics li {
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
         .disclaimer {
             margin-top: 20px;
             text-align: center;
@@ -287,6 +318,16 @@
         </ul>
     </div>
 
+    <div class="tokenomics">
+        <h2>TOKENOMICS</h2>
+        <ul>
+            <li>10% Allocated to Winners</li>
+            <li>2% Dev Wallet</li>
+            <li>3% Marketing Wallet</li>
+            <li>85% Uniswap V2 Liquidity</li>
+        </ul>
+    </div>
+
     <div class="entry-board">
         <h2>ENTRY BOARD</h2>
         <div id="holder-list"></div>
@@ -308,9 +349,8 @@
         const matrix = document.getElementById('matrix');
         const chars = '★ ☆ ★ ☆';
 
-        // Check if animations are supported
         if (CSS.supports("animation", "1s")) {
-            matrix.style.display = "block"; // Enable the matrix effect
+            matrix.style.display = "block";
             const createMatrixEffect = () => {
                 const screenWidth = window.innerWidth;
                 const numChars = screenWidth > 768 ? 100 : 40;
