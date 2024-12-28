@@ -6,24 +6,24 @@
     <title>$CNTDWN</title>
     <link rel="icon" type="image/png" href="base_icon.png">
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #0052FF, #A3D4FF); /* Main gradient */
-        background-attachment: fixed; /* Ensure consistency */
-        background-size: cover; /* Cover the entire viewport */
-        background-repeat: no-repeat; /* Prevent repetition */
-        background-color: #3399FF; /* Fallback solid color matching the gradient */
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-        overflow-y: auto;
-        position: relative;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0052FF, #A3D4FF); /* Main gradient */
+            background-attachment: fixed; /* Ensure consistency */
+            background-size: cover; /* Cover the entire viewport */
+            background-repeat: no-repeat; /* Prevent repetition */
+            background-color: #3399FF; /* Fallback solid color matching the gradient */
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow-y: auto;
+            position: relative;
+        }
 
         .matrix {
             position: absolute;
@@ -34,6 +34,7 @@
             overflow: hidden;
             z-index: -1;
             pointer-events: none;
+            display: none; /* Initially hidden, enabled if animation works */
         }
 
         .matrix span {
@@ -300,31 +301,34 @@
         const matrix = document.getElementById('matrix');
         const chars = '★ ☆ ★ ☆';
 
-        const createMatrixEffect = () => {
-            const screenWidth = window.innerWidth;
-            const numChars = screenWidth > 768 ? 100 : 40;
+        // Check if animations are supported
+        if (CSS.supports("animation", "1s")) {
+            matrix.style.display = "block"; // Enable the matrix effect
+            const createMatrixEffect = () => {
+                const screenWidth = window.innerWidth;
+                const numChars = screenWidth > 768 ? 100 : 40;
 
-            for (let i = 0; i < numChars; i++) {
-                const span = document.createElement('span');
-                span.textContent = chars.split(' ')[Math.floor(Math.random() * 4)];
-                span.style.left = `${Math.random() * screenWidth}px`;
-                span.style.animationDelay = `${Math.random() * 10}s`;
-                span.style.animationDuration = `${Math.random() * 5 + 5}s`;
-                matrix.appendChild(span);
-            }
-        };
+                for (let i = 0; i < numChars; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = chars.split(' ')[Math.floor(Math.random() * 4)];
+                    span.style.left = `${Math.random() * screenWidth}px`;
+                    span.style.animationDelay = `${Math.random() * 10}s`;
+                    span.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                    matrix.appendChild(span);
+                }
+            };
 
-        const resetMatrixEffect = () => {
-            matrix.innerHTML = '';
             createMatrixEffect();
-        };
 
-        createMatrixEffect();
-
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(resetMatrixEffect, 300);
-        });
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    matrix.innerHTML = '';
+                    createMatrixEffect();
+                }, 300);
+            });
+        }
 
         const countdownElement = document.getElementById('countdown');
         const newYear = new Date(new Date().getFullYear() + 1, 0, 1);
@@ -401,4 +405,3 @@
     </script>
 </body>
 </html>
-
