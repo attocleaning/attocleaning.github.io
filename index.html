@@ -3,23 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COUNTDOWN - CNTDWN</title>
+    <title>$CNTDWN</title>
     <link rel="icon" type="image/png" href="base_icon.png">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0052FF, #A3D4FF);
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            overflow-y: auto;
-            position: relative;
-        }
+   body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0052FF, #A3D4FF);
+    background-attachment: fixed; /* Ensure the gradient stays consistent */
+    background-size: cover; /* Make sure it covers the entire viewport */
+    background-repeat: no-repeat; /* Prevent repetition */
+    background-color: #0052FF; /* Fallback solid color */
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    overflow-y: auto;
+    position: relative;
+}
+
 
         .matrix {
             position: absolute;
@@ -397,3 +402,4 @@
     </script>
 </body>
 </html>
+
