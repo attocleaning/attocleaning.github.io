@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COUNTDOWN - CNTDWN</title>
+    <link rel="icon" type="image/png" href="base_icon.png">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0052FF, #A3D4FF);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .matrix span {
+            position: absolute;
+            font-size: 20px;
+            font-family: monospace;
+            color: rgba(0, 82, 255, 0.8);
+            white-space: nowrap;
+            user-select: none;
+            animation: fall 8s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            animation: swivel 3s infinite linear;
+        }
+
+        @keyframes swivel {
+            0% {
+                transform: rotateY(0deg);
+            }
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-align: center;
+            margin: 50px 20px 20px;
+            color: #0052FF;
+            text-shadow: 2px 2px #000;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-size: 6rem;
+            color: #FFFFFF;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .countdown {
+                font-size: 2rem;
+                padding: 15px 30px;
+            }
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            color: #ffffff;
+            background: #0052FF;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #003CBF;
+        }
+
+        .button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .how-it-works {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 82, 255, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            color: #FFFFFF;
+            font-size: 1.5rem;
+        }
+
+        .how-it-works h2 {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0052FF;
+            text-shadow: 2px 2px #000;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .how-it-works ul {
+            list-style-position: inside;
+            padding: 0;
+            margin: 0;
+        }
+
+        .how-it-works li {
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .how-it-works p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .entry-board {
+            margin-top: 40px;
+            text-align: center;
+            color: #FFFFFF;
+            background: rgba(0, 82, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .entry-board h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #0052FF;
+            text-shadow: 1px 1px #000;
+        }
+
+        #holder-list {
+            font-size: 1rem;
+            text-align: center;
+            margin: 10px auto;
+            color: #FFFFFF;
+            background: rgba(0, 82, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 90%;
+        }
+
+        .pagination {
+            margin-top: 10px;
+        }
+
+        .pagination button {
+            background: #0052FF;
+            color: #FFFFFF;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #003CBF;
+        }
+
+        .pagination button:disabled {
+            background: rgba(0, 82, 255, 0.5);
+            cursor: not-allowed;
+        }
+
+        .disclaimer {
+            margin-top: 20px;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            padding: 10px;
+            background: rgba(0, 82, 255, 0.1);
+            border-radius: 5px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .disclaimer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix" id="matrix"></div>
+
+    <h1>COUNTDOWN ON BASE</h1>
+
+    <div class="logo-container">
+        <img src="base_icon.png" alt="Base Icon">
+    </div>
+
+    <div class="subtitle">TIME UNTIL NEW YEAR</div>
+
+    <div class="countdown" id="countdown">00:00:00</div>
+
+    <a class="button" href="https://dexscreener.com" target="_blank">
+        <img src="dexscreener.png" alt="DEXScreener Logo">DEXScreener
+    </a>
+    <a class="button" href="https://twitter.com" target="_blank">
+        <img src="twitter.png" alt="Twitter Logo">Twitter
+    </a>
+    <a class="button" href="https://telegram.org" target="_blank">
+        <img src="telegram.png" alt="Telegram Logo">Telegram
+    </a>
+
+    <div class="how-it-works">
+        <h2>HOW IT WORKS</h2>
+        <ul>
+            <li>Every holder of CTNDWN will be automatically entered into a draw.</li>
+            <li>For every $1 USD held, you will receive 1 entry.</li>
+            <li>On New Year's Day, 10 winners will be selected.</li>
+            <li>Each winner will receive $1000 USD worth of CNTDWN.</li>
+        </ul>
+    </div>
+
+    <div class="entry-board">
+        <h2>ENTRY BOARD</h2>
+        <div id="holder-list"></div>
+        <div class="pagination">
+            <button id="prev-page" disabled>Previous</button>
+            <button id="next-page">Next</button>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        <h2>DISCLAIMER</h2>
+        <p>
+            The $1000 USD prize assumes a $100k market cap. Each winner receives 1% of the total CNTDWN token supply. 
+            Actual value may vary significantly due to market fluctuations.
+        </p>
+    </div>
+
+    <script>
+        const matrix = document.getElementById('matrix');
+        const chars = '★ ☆ ★ ☆';
+
+        const createMatrixEffect = () => {
+            const screenWidth = window.innerWidth;
+            const numChars = screenWidth > 768 ? 100 : 40;
+
+            for (let i = 0; i < numChars; i++) {
+                const span = document.createElement('span');
+                span.textContent = chars.split(' ')[Math.floor(Math.random() * 4)];
+                span.style.left = `${Math.random() * screenWidth}px`;
+                span.style.animationDelay = `${Math.random() * 10}s`;
+                span.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                matrix.appendChild(span);
+            }
+        };
+
+        const resetMatrixEffect = () => {
+            matrix.innerHTML = '';
+            createMatrixEffect();
+        };
+
+        createMatrixEffect();
+
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(resetMatrixEffect, 300);
+        });
+
+        const countdownElement = document.getElementById('countdown');
+        const newYear = new Date(new Date().getFullYear() + 1, 0, 1);
+
+        const updateCountdown = () => {
+            const now = new Date();
+            const diff = newYear - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+            countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const simulatedHolders = [
+            { address: "0x1A2b3C4D5E6F7890", entries: 366 },
+            { address: "0xABCDE12345FED678", entries: 102 },
+            { address: "0xA1B2C3D4E5F6G789", entries: 101 },
+            { address: "0xFFEEAABBCCDDEE99", entries: 26 },
+            { address: "0xFFEEAABBCCDDEE99", entries: 22 },
+            { address: "0xFFEEAABBCCDDEE99", entries: 19 },
+            { address: "0xFFEEAABBCCDDEE99", entries: 15 },
+            { address: "0xFFEEAABBCCDDEE99", entries: 11 },
+            { address: "0xBBCCDDEEFFAABBCC", entries: 10 },
+            { address: "0x123456789ABCDEF0", entries: 5 },
+            { address: "0x0FEDCBA987654321", entries: 2 },
+            { address: "0x1122334455667788", entries: 2 },
+            { address: "0x5566778899AABBCC", entries: 1 },
+        ];
+
+        let currentPage = 1;
+        const entriesPerPage = 10;
+
+        const renderEntryBoard = () => {
+            const holderList = document.getElementById("holder-list");
+            holderList.innerHTML = "";
+
+            const filteredHolders = simulatedHolders.filter(h => h.entries > 1);
+            const start = (currentPage - 1) * entriesPerPage;
+            const end = currentPage * entriesPerPage;
+            const paginated = filteredHolders.slice(start, end);
+
+            if (paginated.length === 0) {
+                holderList.innerHTML = "<p>No holders found.</p>";
+                return;
+            }
+
+            paginated.forEach(holder => {
+                const entry = document.createElement("div");
+                entry.textContent = `${holder.address} - ${holder.entries} Entries`;
+                holderList.appendChild(entry);
+            });
+
+            document.getElementById("prev-page").disabled = currentPage === 1;
+            document.getElementById("next-page").disabled = end >= filteredHolders.length;
+        };
+
+        document.getElementById("prev-page").addEventListener("click", () => {
+            currentPage--;
+            renderEntryBoard();
+        });
+
+        document.getElementById("next-page").addEventListener("click", () => {
+            currentPage++;
+            renderEntryBoard();
+        });
+
+        renderEntryBoard();
+    </script>
+</body>
+</html>
