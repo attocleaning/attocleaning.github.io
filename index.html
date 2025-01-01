@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="turbanicon.png" type="image/png">
+    <title>Indian Brett</title>
+    <style>
+        @font-face {
+            font-family: 'NeutonSC';
+            src: url('Neuton-SC-Extrabold.ttf') format('truetype');
+        }
+        body {
+            background-color: #e38360;
+            margin: 0;
+            font-family: 'NeutonSC', Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .banner {
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            animation: slideDown 1s forwards, bounce 1s 1s forwards;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            margin: 20px auto;
+            width: 80%;
+            opacity: 0;
+            animation: slideDown 1s forwards, bounce 1s 1s forwards;
+        }
+        .buttons a {
+            text-decoration: none;
+            color: white;
+            background-color: #333;
+            padding: 10px 20px; /* Original size for mobile */
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #555;
+        }
+        .content {
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            font-size: 38px; /* Regular text size */
+            opacity: 0;
+            animation: slideUp 1s forwards, bounce 1s 1s forwards;
+        }
+        @media (min-width: 769px) {
+            .buttons a {
+                padding: 20px 40px; /* Larger buttons on desktop */
+                font-size: 22px;
+            }
+        }
+        @media (max-width: 768px) {
+            .content {
+                font-size: 25px; /* Mobile text size */
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="indianbrettbanner.png" alt="Banner Image" class="banner">
+    <div class="buttons">
+        <a href="https://dexscreener.com" target="_blank">Dexscreener</a>
+        <a href="https://telegram.org" target="_blank">Telegram</a>
+        <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+    <div class="content">
+        <h1>Welcome to Indian Brett - The Memecoin on Base!</h1>
+        <p>
+            Indian Brett is officially on base, and we are thrilled to introduce a new era in the world of memecoins. Our mission is to put an end to discrimination against "Jeets" by creating a token that celebrates and embraces Indian culture.
+        </p>
+        <p>
+            Join us on this exciting journey as we blend the fun and engaging world of memecoins with a meaningful cause. Together, let's embrace Indian culture and show the world the power of unity through Indian Brett.
+        </p>
+    </div>
+</body>
+</html>

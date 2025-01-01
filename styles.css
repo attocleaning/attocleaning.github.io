@@ -1,0 +1,62 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 200%;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: url('normalicon.png') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+.box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background: rgba(51, 51, 51, 0.8); /* Semi-transparent to see the background image */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.links {
+    margin-top: 20px;
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 5px 10px;
+    background: #555;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.links a:hover {
+    background: #777;
+}
